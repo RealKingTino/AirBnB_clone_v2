@@ -3,9 +3,8 @@ from fabric.api import env, put, run, local
 import os
 from datetime import datetime
 
-env.hosts = ['<IP web-01>', '<IP web-02>']
-env.user = 'ubuntu'  # Replace with your SSH username
-env.key_filename = ['/path/to/your/ssh/key']  # Replace with your SSH key path
+env.hosts = ['52.3.241.118', '54.173.33.44']
+env.user = 'ubuntu'
 
 
 def do_pack():
@@ -16,8 +15,7 @@ def do_pack():
     time = now.strftime("%Y%m%d%H%M%S")
     name = "versions/web_static_" + time + ".tgz"
 
-    if os.path.isdir("versions") is False:
-        local("mkdir -p versions")
+    local("mkdir -p versions")
 
     stat = local("tar -cvzf {} web_static".format(name))
 
