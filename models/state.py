@@ -25,5 +25,7 @@ class State(BaseModel, Base):
             """Getter attribute cities that returns the list of City instances
                with state_id equals to the current State.id
             """
-            city_instances = BaseModel._FileStorage__objects  # Assuming BaseModel has the __objects attribute
-            return [city for city in city_instances.values() if city.state_id == self.id]
+            from models import storage
+            all_cities = storage.all(City)
+            linked_cities = [city for city in all_cities.values() if city.state_id == self.id]
+            return linked_cities
