@@ -5,6 +5,7 @@ from sqlalchemy import Column, String, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
 from models.base_model import BaseModel, Base
 
+
 class State(BaseModel, Base):
     """ State class """
     storage_type = environ.get('HBNB_TYPE_STORAGE', 'file')
