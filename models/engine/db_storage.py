@@ -73,7 +73,8 @@ class DBStorage:
     def reload(self):
         """ configuration
         Base.metadata.create_all(self.__engine)
-        Session = scoped_session(sessionmaker(bind=self.__engine, expire_on_commit=False))
+        Session = scoped_session(sessionmaker
+        (bind=self.__engine, expire_on_commit=False))
         self.__session = Session()
         """
 
@@ -84,6 +85,7 @@ class DBStorage:
 
     def close(self):
         """
-        Calls the remove method on the private session attribute (self.__session).
+        Calls the remove method on the private
+        session attribute (self.__session).
         """
         self.__session.remove()
